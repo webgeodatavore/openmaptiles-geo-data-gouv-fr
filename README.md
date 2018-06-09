@@ -2,11 +2,7 @@
 
 Geo.data.gouv.fr rattaché à [Etalab](https://www.etalab.gouv.fr) a mis récemment en place un serveur de tuiles vectoriel utilisant le [projet OpenMapTiles](https://openmaptiles.org)
 
-Il s'est avéré à travers des échanges sur Twitter qu'il serait intéressant de documenter comment consommer les tuiles vecteur de ce serveur. Ce dépôt constitue une amorce pour cela.
-
-<blockquote class="twitter-tweet" data-conversation="none" data-lang="fr"><p lang="fr" dir="ltr">On prépare un serveur en <a href="https://t.co/5ddTsmpFJU">https://t.co/5ddTsmpFJU</a> avec des tuiles vectorielles OSM : <a href="https://t.co/5SFsaROsdp">https://t.co/5SFsaROsdp</a><br>Tuiles images il y a aussi quelque chose dans les cartons. Beta-testeurs bienvenus 🤗</p>&mdash; Jérôme Desboeufs ⚡️ (@jdesboeufs) <a href="https://twitter.com/jdesboeufs/status/1004601740333809666?ref_src=twsrc%5Etfw">7 juin 2018</a></blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
+Il s'est avéré à travers [des échanges sur Twitter](https://twitter.com/jdesboeufs/status/1004995399273385985) qu'il serait intéressant de documenter comment consommer les tuiles vecteur de ce serveur. Ce dépôt constitue une amorce pour cela.
 
 ## Exemples
 
