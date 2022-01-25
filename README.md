@@ -8,7 +8,7 @@ Il s'est avéré à travers [des échanges sur Twitter](https://twitter.com/jdes
 
 Vous trouverez les exemples chacun dans son répertoire pour chacune des librairies JavaScript principale existante.
 
-* [démo Mapbox GL JS](https://raw.githack.com/webgeodatavore/openmaptiles-geo-data-gouv-fr/master/mapbox-gl-js/mapbox-gl-js-openmaptiles.html) Elle prend le style natif fourni
+* [démo Maplibre GL JS](https://raw.githack.com/webgeodatavore/openmaptiles-geo-data-gouv-fr/master/maplibre-gl-js/maplibre-gl-js-openmaptiles.html) Elle prend le style natif fourni
 
 * [démo OpenLayers](https://raw.githack.com/webgeodatavore/openmaptiles-geo-data-gouv-fr/master/openlayers/openlayers-openmaptiles.html) Elle prend le style Mapbox JSON JS mis à disposition et les convertit à la volée en style OpenLayers.
 
