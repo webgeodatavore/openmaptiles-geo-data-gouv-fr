@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8' />
+  <title>Maplibre GL JS - OpenMapTiles Geo.data.gouv.fr</title>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <script type="text/javascript" src="https://unpkg.com/maplibre-gl@1.15.2/dist/maplibre-gl.js"></script>
+  <script type="text/javascript" src="https://raw.githack.com/acalcutt/maplibre-gl-inspect/master/dist/maplibre-gl-inspect.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/maplibre-gl@1.15.2/dist/maplibre-gl.css">
+  <link rel="stylesheet" type="text/css" href="https://rawcdn.githack.com/acalcutt/maplibre-gl-inspect/9349f0f76d44ca94595dd1440f4429b23056c4e9/dist/maplibre-gl-inspect.css">
+  <style>
+    body {
+      margin:0;
+      padding:0;
+    }
+    #map {
+      position:absolute;
+      top:0;
+      bottom:0;
+      width:100%;
+    }
+    </style>
+  </head>
+  <body>
+    <div id='map'></div>
+    <script>
+      var map = new maplibregl.Map({
+        container: 'map',
+        style: 'https://openmaptiles.geo.data.gouv.fr/styles/osm-bright/style.json',
+        center: [-1.54988, 47.21831],
+        zoom: 17
+      });
+
+      map.addControl(new maplibregl.NavigationControl());
+      map.addControl(new MaplibreInspect({
+        showInspectMap: false,
+        popup: new maplibregl.Popup({
+          closeButton: false,
+          closeOnClick: false
+        })
+      }));
+
+      function addCadastre() {
+        map.addSource("cadastre", {
+          "type": "vector",
+          "tiles": [
+            "https://openmaptiles.geo.data.gouv.fr/data/cadastre/{z}/{x}/{y}.pbf"
+          ],
+          "maxzoom": 16
+        })
+        map.addLayer({
+            'id': 'parcelles',
+            'type': 'line',
+            'source': 'cadastre',
+            'source-layer': 'parcelles',
+            'layout': {
+              'line-cap': 'round',
+              'line-join': 'round'
+            },
+            'paint': {
+              'line-opacity': 0.6,
+              'line-color': 'black',
+              'line-width': 0.5
+            }
+          }
+        );
+      }
+      map.on('style.load', addCadastre);
+
+    </script>
+  </body>
+</html>
