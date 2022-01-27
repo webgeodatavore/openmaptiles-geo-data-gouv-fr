@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <!-- <script type="text/javascript" src="https://unpkg.com/leaflet.vectorgrid@1.3.0"></script> -->
+    <script type="text/javascript" src="https://unpkg.com/leaflet-vector-tile-layer@0.8.0/dist/VectorTileLayer.umd.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+      html, body {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+      #map {
+        /* configure the size of the map */
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      // initialize Leaflet
+      var map = L.map('map').setView({lon: -1.54988, lat: 47.21831}, 17);
+
+      // add the OpenStreetMap tiles
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
+      }).addTo(map);
+
+      // show the scale bar on the lower left corner
+      L.control.scale({imperial: true, metric: true}).addTo(map);
+
+      var openmaptilesCadastreUrl = "https://openmaptiles.geo.data.gouv.fr/data/cadastre/{z}/{x}/{y}.pbf";
+
+    function myStyle(feature, layerName, zoom) {
+      // console.log(feature, layerName, zoom)
+      if (layerName == 'parcelles') {
+        return {
+          "color": 'black',
+          "fillColor": null,
+          "opacity": 0.4,
+          "fillOpacity": 0,
+          "weight": 1,
+          "interactive": false
+        };
+      }
+    }
+
+
+
+      const cadastreVectorTileLayer = VectorTileLayer(openmaptilesCadastreUrl, {
+        maxDetailZoom: 16,
+        maxZoom: 20,
+        style: myStyle
+      }).addTo(map);
+
+
+
+      // var openmaptilesCadastreVectorTileOptions = {
+      //   rendererFactory: L.canvas.tile,
+      //   attribution: '<a href="https://openmaptiles.org/">&copy; OpenMapTiles</a>, <a href="http://www.openstreetmap.org/copyright">&copy; OpenStreetMap</a> contributors',
+      //   vectorTileLayerStyles: vectorTileStyling,
+      //   maxZoom: 20,
+      //   maxNativeZoom: 16
+      // };
+      // openmaptilesCadastreUrl
+      // var openmaptilesCadastrePbfLayer = L.vectorGrid.protobuf(openmaptilesCadastreUrl, openmaptilesCadastreVectorTileOptions).addTo(map);
+
+      // show a marker on the map
+      // L.marker({lon: 0, lat: 0}).bindPopup('The center of the world').addTo(map);
+
+
+    </script>
+  </body>
+</html>
