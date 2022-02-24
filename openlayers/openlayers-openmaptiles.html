@@ -26,6 +26,10 @@
 
     const map = olms.apply('map', 'https://openmaptiles.geo.data.gouv.fr/styles/osm-bright/style.json');
 
+    // Changement pour respecter l'attribution OpenStreetMap
+    map.getControls().clear()
+    map.getControls().extend(ol.control.defaults({attributionOptions: {collapsed: false}}).getArray())
+
     // Changement car non satisfait du zoom et
     // du centre qui vient par défaut du style
     map.getView().setZoom(6);

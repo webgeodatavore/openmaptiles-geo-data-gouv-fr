@@ -43,6 +43,10 @@
         },
       }))
 
+      // Changement pour respecter l'attribution OpenStreetMap
+      mymap.getControls().clear()
+      mymap.getControls().extend(ol.control.defaults({attributionOptions: {collapsed: false}}).getArray())
+
       // Changement car non satisfait du zoom et
       // du centre qui vient par défaut du style
       mymap.getView().setZoom(17);
