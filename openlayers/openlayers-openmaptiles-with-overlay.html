@@ -5,7 +5,7 @@
   <title>OpenLayers - OpenMapTiles Geo.data.gouv.fr</title>
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.12.0/css/ol.css" type="text/css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v9.1.0/ol.css" />
   <style>
     html, body {
       height: 100%;
@@ -20,11 +20,11 @@
 </head>
 <body>
   <div id="map"></div>
-  <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.12.0/build/ol.js"></script>
-  <script src="https://unpkg.com/ol-mapbox-style/dist/olms.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/ol@v9.1.0/dist/ol.js"></script>
+  <script src="https://unpkg.com/ol-mapbox-style@12.2.0/dist/olms.js"></script>
   <script>
 
-    olms('map', 'https://openmaptiles.geo.data.gouv.fr/styles/osm-bright/style.json').then(mymap => {
+    olms.apply('map', 'https://openmaptiles.geo.data.gouv.fr/styles/osm-bright/style.json').then(mymap => {
       mymap.addLayer(new ol.layer.VectorTile({
         source: new ol.source.VectorTile({
           format: new ol.format.MVT(),
@@ -45,7 +45,7 @@
 
       // Changement pour respecter l'attribution OpenStreetMap
       mymap.getControls().clear()
-      mymap.getControls().extend(ol.control.defaults({attributionOptions: {collapsed: false}}).getArray())
+      mymap.getControls().extend(ol.control.defaults.defaults({attributionOptions: {collapsed: false}}).getArray())
 
       // Changement car non satisfait du zoom et
       // du centre qui vient par défaut du style
